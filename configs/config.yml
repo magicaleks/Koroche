@@ -1,0 +1,17 @@
+app:
+  version: "0.1.0"
+  api_version: "v1"
+  debug: true
+  host: "127.0.0.1"
+  port: 8080
+
+applog:
+  log_format: "%(asctime)s %(service_name)s %(env_type)s %(levelname)s: %(message)s"
+  handlers:
+    stream:
+      handler: 'stdout'
+  level: 'INFO'
+
+mongo:
+  uri: "mongodb+srv://root:zfwaK8RxbJ4gZvP@twokeepcom.ioxf2fy.mongodb.net/"
+  database: "onetotwo"

@@ -1,0 +1,13 @@
+# Web app
+fastapi==0.103.0
+uvicorn==0.22.0
+# Validation
+pydantic==2.3.0
+# Database driver
+pymongo[srv]==4.1.1
+# Tests
+pytest==7.4.0
+pytest-dependency==0.5.1
+# Other
+PyYAML==6.0
+uuid==1.30.0
