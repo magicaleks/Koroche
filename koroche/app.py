@@ -3,13 +3,13 @@ import pathlib
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from onetotwo.api import router
-from onetotwo.applogger import AppLogger
-from onetotwo.config import ConfigManager
-from onetotwo.oneway.manager import OneWayManager, RedirectManager
-from onetotwo.oneway.model import OneWay, Redirect
-from onetotwo.user.manager import UserManager
-from onetotwo.user.model import User
+from koroche.api import router
+from koroche.applogger import AppLogger
+from koroche.config import ConfigManager
+from koroche.oneway.manager import OneWayManager, RedirectManager
+from koroche.oneway.model import OneWay, Redirect
+from koroche.user.manager import UserManager
+from koroche.user.model import User
 from uvicorn import run
 
 fpath = pathlib.Path(__file__)

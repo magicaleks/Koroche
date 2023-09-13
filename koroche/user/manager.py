@@ -1,10 +1,10 @@
 # %% Import Dependencies
 from typing import Any, Optional, Type
 
-from onetotwo.applogger import AppLogger
-from onetotwo.exceptions import MissingRequiredArgument
-from onetotwo.manager import MongoManager
-from onetotwo.user.model import User, UserLocale
+from koroche.applogger import AppLogger
+from koroche.exceptions import MissingRequiredArgument
+from koroche.manager import MongoManager
+from koroche.user.model import User, UserLocale
 
 
 # %% Manager

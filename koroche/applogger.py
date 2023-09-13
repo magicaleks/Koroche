@@ -4,7 +4,7 @@ from importlib import import_module
 from logging import Formatter, Logger, StreamHandler
 from typing import Optional
 
-from onetotwo.config import AppLoggerConfig
+from koroche.config import AppLoggerConfig
 
 
 # %% Define logging ----

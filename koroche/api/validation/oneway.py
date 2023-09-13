@@ -1,6 +1,6 @@
 from typing import Any, Optional
 
-from onetotwo.oneway.model import WayLifetime
+from koroche.oneway.model import WayLifetime
 from pydantic import BaseModel
 
 

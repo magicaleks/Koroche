@@ -2,7 +2,7 @@
 import inspect
 from typing import Any, Dict
 
-from onetotwo.model import ConfigModel
+from koroche.model import ConfigModel
 from yaml import full_load as yaml_load
 
 

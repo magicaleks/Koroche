@@ -2,7 +2,7 @@
 from enum import Enum
 from typing import Dict, Optional
 
-from onetotwo.model import MongoModel, ObjectModel
+from koroche.model import MongoModel, ObjectModel
 
 
 # %% Enums

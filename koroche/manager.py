@@ -3,10 +3,10 @@ from abc import ABC
 from datetime import datetime
 from typing import Any, Generic, Iterable, Optional, Type, TypeVar
 
-from onetotwo.applogger import AppLogger
-from onetotwo.config import ConfigManager
-from onetotwo.model import MongoModel
-from onetotwo.utils import make_uuid
+from koroche.applogger import AppLogger
+from koroche.config import ConfigManager
+from koroche.model import MongoModel
+from koroche.utils import make_uuid
 from pymongo import MongoClient
 from pymongo.collection import Collection
 from pymongo.database import Database

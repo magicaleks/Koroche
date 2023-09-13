@@ -2,11 +2,11 @@
 from typing import List, Optional, Type
 from urllib.parse import urlparse
 
-from onetotwo.applogger import AppLogger
-from onetotwo.exceptions import MissingRequiredArgument
-from onetotwo.manager import MongoManager
-from onetotwo.oneway.model import OneWay, Redirect, TargetUrl, WayLifetime
-from onetotwo.utils import make_alias
+from koroche.applogger import AppLogger
+from koroche.exceptions import MissingRequiredArgument
+from koroche.manager import MongoManager
+from koroche.oneway.model import OneWay, Redirect, TargetUrl, WayLifetime
+from koroche.utils import make_alias
 
 
 # %% Managers

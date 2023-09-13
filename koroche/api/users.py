@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Response
-from onetotwo.api.validation.user import CreateUser, DeleteUser, UpdateUser
-from onetotwo.user.manager import UserManager
-from onetotwo.user.model import User
+from koroche.api.validation.user import CreateUser, DeleteUser, UpdateUser
+from koroche.user.manager import UserManager
+from koroche.user.model import User
 
 router = APIRouter(prefix="/users", tags=["users"])
 

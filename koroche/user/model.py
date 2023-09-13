@@ -1,7 +1,7 @@
 # %% Import dependencies
 from enum import Enum
 
-from onetotwo.model import MongoModel
+from koroche.model import MongoModel
 
 
 # %% Enums
