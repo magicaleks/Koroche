@@ -2,11 +2,11 @@
 from abc import ABC
 from datetime import datetime
 
-from pydantic import BaseModel, Field
+import pydantic as pdc
 
 
 # %% Base models
-class _Model(BaseModel, ABC):
+class _Model(pdc.BaseModel, ABC):
     """Base Model"""
 
     model_config = {
@@ -18,12 +18,12 @@ class _Model(BaseModel, ABC):
     }
 
 
-class MongoModel(_Model, ABC):
-    """Model for storing in Mongo"""
+class BaseModel(_Model, ABC):
+    """Base data model"""
 
     _collection_name: str
 
-    uid: str = Field(alias="_id")
+    uid: str = pdc.Field(alias="_id")
     created_at: datetime
 
     def to_dict(self) -> dict:
@@ -32,7 +32,7 @@ class MongoModel(_Model, ABC):
 
 
 class ObjectModel(_Model, ABC):
-    """Model for object field in Mongo"""
+    """Field object model"""
 
     pass
 

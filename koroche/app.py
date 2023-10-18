@@ -18,7 +18,7 @@ ConfigManager.load_config(path)
 
 app = FastAPI(
     debug=ConfigManager.app.debug,
-    title="Bitter",
+    title="Koroche",
     version=ConfigManager.app.version,
     openapi_url=f"/api/{ConfigManager.app.api_version}/openapi.json",
     docs_url=f"/api/{ConfigManager.app.api_version}/docs",

@@ -1,7 +1,7 @@
 # %% Import dependencies
 from enum import Enum
 
-from koroche.model import MongoModel
+from koroche.model import BaseModel
 
 
 # %% Enums
@@ -11,10 +11,8 @@ class UserLocale(str, Enum):
 
 
 # %% Models
-class User(MongoModel):
+class User(BaseModel):
     """User model"""
-
-    _collection_name = "users"
 
     name: str
     email: str

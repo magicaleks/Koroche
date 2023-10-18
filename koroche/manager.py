@@ -5,34 +5,28 @@ from typing import Any, Generic, Iterable, Optional, Type, TypeVar
 
 from koroche.applogger import AppLogger
 from koroche.config import ConfigManager
-from koroche.model import MongoModel
+from koroche.data import BaseApiClient
+from koroche.model import BaseModel
 from koroche.utils import make_uuid
-from pymongo import MongoClient
-from pymongo.collection import Collection
-from pymongo.database import Database
 
-T = TypeVar("T", bound=MongoModel)
+T = TypeVar("T", bound=BaseModel)
 
 
 # %% Manager
-class MongoManager(Generic[T], ABC):
-    """Base manager for MongoModels"""
+class BaseManager(Generic[T], ABC):
+    """Base manager for BaseModels"""
 
     _model: Type[T]
-    _client: MongoClient
-    _db: Database
-    _collection: Collection
+    _client: BaseApiClient
     _logger: AppLogger
 
     @classmethod
-    def init(cls, logger: AppLogger, model: Type[T]) -> None:
+    def init(cls, logger: AppLogger, model: Type[T], client: BaseApiClient) -> None:
         """Init MongoManager"""
 
         cls._model = model
 
-        cls._client = MongoClient(host=ConfigManager.mongo.uri)
-        cls._db = cls._client.get_database(name=ConfigManager.mongo.database)
-        cls._collection = cls._db.get_collection(cls._model._collection_name)
+        cls._client = client
         cls._logger = logger
 
         cls._logger.info(f"{model.__name__} manager successfull started")

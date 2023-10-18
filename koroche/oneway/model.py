@@ -2,7 +2,7 @@
 from enum import Enum
 from typing import Dict, Optional
 
-from koroche.model import MongoModel, ObjectModel
+from koroche.model import BaseModel, ObjectModel
 
 
 # %% Enums
@@ -27,7 +27,7 @@ class TargetUrl(ObjectModel):
         return self.domain + self.path + "?" + "&".join([k + "=" + v for k, v in self.params.items()])
 
 
-class OneWay(MongoModel):
+class OneWay(BaseModel):
     """Shortened link model"""
 
     _collection_name = "oneways"
@@ -40,7 +40,7 @@ class OneWay(MongoModel):
     user_uid: Optional[str]
 
 
-class Redirect(MongoModel):
+class Redirect(BaseModel):
     """Redirect model"""
 
     _collection_name = "redirects"

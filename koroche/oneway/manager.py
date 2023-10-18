@@ -4,13 +4,13 @@ from urllib.parse import urlparse
 
 from koroche.applogger import AppLogger
 from koroche.exceptions import MissingRequiredArgument
-from koroche.manager import MongoManager
+from koroche.manager import BaseManager
 from koroche.oneway.model import OneWay, Redirect, TargetUrl, WayLifetime
 from koroche.utils import make_alias
 
 
 # %% Managers
-class RedirectManager(MongoManager[Redirect]):
+class RedirectManager(BaseManager[Redirect]):
     """Redirect mongodb manager"""
 
     @classmethod
