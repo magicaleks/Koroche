@@ -1,6 +1,6 @@
 # %% Import dependency
 import inspect
-from typing import Any, Dict
+from typing import Any, Dict, List
 
 from koroche.model import ConfigModel
 from yaml import full_load as yaml_load
@@ -33,12 +33,21 @@ class CacheConfig(ConfigModel):
     _name = "cache"
 
 
-class MongoConfig(ConfigModel):
-    """Config for connection to MongoDb"""
+class BackoffConfig(ConfigModel):
+    """Config for backoff"""
 
-    _name = "mongo"
-    uri: str
-    database: str
+    _name = "backoff"
+    max_tries_n: int
+    code_forcelist: List[int]
+
+
+class NetworkConfig(ConfigModel):
+    """Config for network connections"""
+
+    _name = "net"
+
+    backoff: BackoffConfig
+    base_api_url: str
 
 
 # %% Manager
@@ -48,7 +57,7 @@ class ConfigManager:
     app: AppConfig
     applog: AppLoggerConfig
     # cache_config: CacheConfig
-    mongo: MongoConfig
+    net: NetworkConfig
 
     @classmethod
     def load_config(cls, path: str) -> None:

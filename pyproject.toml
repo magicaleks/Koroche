@@ -6,6 +6,7 @@ exclude = '''
 /(
   | .mypy_cache
   | .pytest_cache
+  | .venv
   | venv
 )/
 '''
@@ -18,10 +19,10 @@ use_parentheses = true
 ensure_newline_before_comments = true
 line_length = 120
 src_paths = ["src"]
-skip = ["mypy_cache", "pytest_cache" , "venv"]
+skip = [".mypy_cache", "pytest_cache" , "venv", ".venv"]
 
 [tool.flake8]
-exclude=".git,./tests,./venv,./build"
+exclude=".git,./tests,./venv,./.venv,./build"
 max-line-length = 120
 rst-roles = "class, func, ref"
 rst-directives = "envvar, exception"
@@ -29,13 +30,6 @@ extend-ignore = "E203,E501,W503,D100,D105,D107,D400,D104,DAR401,D401"
 per-file-ignores = "__init__.py:F401"
 docstring-convention = "pep257"
 docstring_style = "sphinx"
-
-[tool.mypy]
-exclude=".git,./tests,./venv,./build"
-disable_error_code="attr-defined"
-plugins = "pydantic.mypy"
-ignore_missing_imports = true
-implicit_reexport = false
 
 # Disallow dynamic typing
 disallow_any_unimported = false

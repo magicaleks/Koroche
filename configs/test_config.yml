@@ -3,7 +3,7 @@ app:
   api_version: "v1"
   debug: true
   host: "127.0.0.1"
-  port: 8080
+  port: 23003
 
 applog:
   log_format: "%(asctime)s %(service_name)s %(env_type)s %(levelname)s: %(message)s"
@@ -12,6 +12,8 @@ applog:
       handler: 'stdout'
   level: 'DEBUG'
 
-mongo:
-  uri: "mongodb+srv://root:zfwaK8RxbJ4gZvP@twokeepcom.ioxf2fy.mongodb.net/"
-  database: "onetotwo"
+net:
+  base_api_url: "localhost:19097"
+  backoff:
+    max_tries_n: 3
+    code_forcelist: [408, 429, 500, 502, 503, 504]

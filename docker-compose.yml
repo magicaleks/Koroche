@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  koroche-app:
+    container_name: "koroche-app"
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+  nginx-server:
+    container_name: "nginx-server"
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+
+    ports:
+      - "80:23002"

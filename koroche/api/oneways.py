@@ -7,7 +7,7 @@ from koroche.oneway.model import OneWay
 router = APIRouter(prefix="/oneways", tags=["oneways"])
 
 
-@router.get("/get/uid/{uid}", response_model=OneWay, response_description="Get oneway by it's uid")
+@router.get("/get/uid/{uid}", response_model=OneWay, response_description="Get oneway by it's uid", deprecated=True)
 def get_oneway(uid: str):
     """Get oneway"""
 
@@ -41,7 +41,7 @@ def update_oneway(schema: UpdateOneWay):
     return Response()
 
 
-@router.post("/delete", response_description="Delete oneway")
+@router.post("/delete", response_description="Delete oneway", deprecated=True)
 def delete_oneway(schema: DeleteOneWay):
     """Delete oneway"""
 

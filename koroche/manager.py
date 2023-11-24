@@ -4,7 +4,6 @@ from datetime import datetime
 from typing import Any, Generic, Iterable, Optional, Type, TypeVar
 
 from koroche.applogger import AppLogger
-from koroche.config import ConfigManager
 from koroche.data import BaseApiClient
 from koroche.model import BaseModel
 from koroche.utils import make_uuid
@@ -21,7 +20,7 @@ class BaseManager(Generic[T], ABC):
     _logger: AppLogger
 
     @classmethod
-    def init(cls, logger: AppLogger, model: Type[T], client: BaseApiClient) -> None:
+    def init(cls, logger: AppLogger, model: Type[T], client: BaseApiClient = None) -> None:
         """Init MongoManager"""
 
         cls._model = model
