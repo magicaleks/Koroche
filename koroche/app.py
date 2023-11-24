@@ -7,13 +7,11 @@ from koroche.api import router
 from koroche.applogger import AppLogger
 from koroche.config import ConfigManager
 from koroche.oneway.manager import OneWayManager, RedirectManager
-from koroche.oneway.model import OneWay, Redirect
 from koroche.user.manager import UserManager
-from koroche.user.model import User
 from uvicorn import run
 
 fpath = pathlib.Path(__file__)
-path = os.path.join(fpath.parent.parent, "configs", "test_config.yml")
+path = os.path.join(fpath.parent.parent, "configs", "config.yml")
 ConfigManager.load_config(path)
 
 app = FastAPI(
@@ -36,13 +34,13 @@ def startup():
     """Startup function"""
 
     user_logger = AppLogger("User", ConfigManager.applog)
-    UserManager.init(user_logger, User)
+    UserManager.init(user_logger)
 
     redirect_logger = AppLogger("Redirect", ConfigManager.applog)
-    RedirectManager.init(redirect_logger, Redirect)
+    RedirectManager.init(redirect_logger)
 
     way_logger = AppLogger("OneWay", ConfigManager.applog)
-    OneWayManager.init(way_logger, OneWay)
+    OneWayManager.init(way_logger)
 
 
 if __name__ == "__main__":

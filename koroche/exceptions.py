@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
 
+from httpx import HTTPError
+
 
 class BaseException_(Exception, ABC):
     """Base class for exceptions"""
@@ -23,3 +25,12 @@ class MissingRequiredArgument(BaseException_):
             return f"MissingRequiredArgument: {self.message}"
         else:
             return "MissingRequiredArgument"
+
+
+class RetryPolicyException(HTTPError):
+    """Raise while server response with status code from retry policy forcelist"""
+
+    def __init__(self, url: str, status_code: int) -> None:
+        """Initialize exception with response."""
+        msg = f"HTTP error: {url} responded with {status_code} status code"
+        super().__init__(msg)

@@ -1,0 +1,456 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "Koroche",
+        "version": "0.1.0"
+    },
+    "paths": {
+        "/api/v1/oneways/get/uid/{uid}": {
+            "get": {
+                "tags": [
+                    "api",
+                    "oneways"
+                ],
+                "summary": "Get Oneway",
+                "description": "Get oneway",
+                "operationId": "get_oneway_api_v1_oneways_get_uid__uid__get",
+                "deprecated": true,
+                "parameters": [
+                    {
+                        "name": "uid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Uid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get oneway by it's uid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OneWay"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/oneways/create": {
+            "post": {
+                "tags": [
+                    "api",
+                    "oneways"
+                ],
+                "summary": "Create Oneway",
+                "description": "Create oneway",
+                "operationId": "create_oneway_api_v1_oneways_create_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateOneWay"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Create oneway",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OneWay"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/oneways/update": {
+            "post": {
+                "tags": [
+                    "api",
+                    "oneways"
+                ],
+                "summary": "Update Oneway",
+                "description": "Update oneway",
+                "operationId": "update_oneway_api_v1_oneways_update_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateOneWay"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Update oneway",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/oneways/delete": {
+            "post": {
+                "tags": [
+                    "api",
+                    "oneways"
+                ],
+                "summary": "Delete Oneway",
+                "description": "Delete oneway",
+                "operationId": "delete_oneway_api_v1_oneways_delete_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DeleteOneWay"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Delete oneway",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": true
+            }
+        },
+        "/api/v1/oneways/{alias}": {
+            "get": {
+                "tags": [
+                    "api",
+                    "oneways"
+                ],
+                "summary": "Redirect",
+                "description": "Get redirect link",
+                "operationId": "redirect_api_v1_oneways__alias__get",
+                "parameters": [
+                    {
+                        "name": "alias",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Alias"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get redirect link by alias",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "CreateOneWay": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "title": "Name"
+                    },
+                    "target": {
+                        "type": "string",
+                        "title": "Target"
+                    },
+                    "is_temporary": {
+                        "type": "boolean",
+                        "title": "Is Temporary"
+                    },
+                    "lifetime": {
+                        "$ref": "#/components/schemas/WayLifetime"
+                    },
+                    "user_uid": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "User Uid"
+                    },
+                    "only_numbers": {
+                        "type": "boolean",
+                        "title": "Only Numbers"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
+                    "target",
+                    "is_temporary",
+                    "lifetime",
+                    "user_uid",
+                    "only_numbers"
+                ],
+                "title": "CreateOneWay",
+                "description": "CreateOneWay validate model"
+            },
+            "DeleteOneWay": {
+                "properties": {
+                    "uid": {
+                        "type": "string",
+                        "title": "Uid"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "uid"
+                ],
+                "title": "DeleteOneWay",
+                "description": "DeleteOneWay validate model"
+            },
+            "HTTPValidationError": {
+                "properties": {
+                    "detail": {
+                        "items": {
+                            "$ref": "#/components/schemas/ValidationError"
+                        },
+                        "type": "array",
+                        "title": "Detail"
+                    }
+                },
+                "type": "object",
+                "title": "HTTPValidationError"
+            },
+            "OneWay": {
+                "properties": {
+                    "_id": {
+                        "type": "string",
+                        "title": " Id"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "title": "Created At"
+                    },
+                    "name": {
+                        "type": "string",
+                        "title": "Name"
+                    },
+                    "target": {
+                        "$ref": "#/components/schemas/TargetUrl"
+                    },
+                    "alias": {
+                        "type": "string",
+                        "title": "Alias"
+                    },
+                    "is_temporary": {
+                        "type": "boolean",
+                        "title": "Is Temporary"
+                    },
+                    "lifetime": {
+                        "$ref": "#/components/schemas/WayLifetime"
+                    },
+                    "user_uid": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "User Uid"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "_id",
+                    "created_at",
+                    "name",
+                    "target",
+                    "alias",
+                    "is_temporary",
+                    "lifetime",
+                    "user_uid"
+                ],
+                "title": "OneWay",
+                "description": "Shortened link model"
+            },
+            "TargetUrl": {
+                "properties": {
+                    "is_secured": {
+                        "type": "boolean",
+                        "title": "Is Secured"
+                    },
+                    "domain": {
+                        "type": "string",
+                        "title": "Domain"
+                    },
+                    "path": {
+                        "type": "string",
+                        "title": "Path"
+                    },
+                    "params": {
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "type": "object",
+                        "title": "Params"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "is_secured",
+                    "domain",
+                    "path",
+                    "params"
+                ],
+                "title": "TargetUrl",
+                "description": "Target url model"
+            },
+            "UpdateOneWay": {
+                "properties": {
+                    "uid": {
+                        "type": "string",
+                        "title": "Uid"
+                    },
+                    "alias": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Alias"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "uid",
+                    "alias"
+                ],
+                "title": "UpdateOneWay",
+                "description": "UpdateOneWay validate model"
+            },
+            "ValidationError": {
+                "properties": {
+                    "loc": {
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "integer"
+                                }
+                            ]
+                        },
+                        "type": "array",
+                        "title": "Location"
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Message"
+                    },
+                    "type": {
+                        "type": "string",
+                        "title": "Error Type"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "loc",
+                    "msg",
+                    "type"
+                ],
+                "title": "ValidationError"
+            },
+            "WayLifetime": {
+                "type": "integer",
+                "enum": [
+                    0,
+                    3,
+                    24,
+                    72,
+                    168,
+                    720
+                ],
+                "title": "WayLifetime"
+            }
+        }
+    }
+}

@@ -8,10 +8,11 @@ from koroche.model import BaseModel, ObjectModel
 # %% Enums
 class WayLifetime(int, Enum):
     Permanent = 0
-    Day = 1
-    ThreeDays = 3
-    Week = 7
-    Month = 30
+    ThreeHours = 3
+    Day = 24
+    ThreeDays = 3 * 24
+    Week = 7 * 24
+    Month = 30 * 24
 
 
 # %% Models

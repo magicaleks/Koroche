@@ -1,5 +1,5 @@
 # %% Import Dependencies
-from typing import List, Optional, Type
+from typing import List, Optional
 from urllib.parse import urlparse
 
 from koroche.applogger import AppLogger
@@ -14,8 +14,8 @@ class RedirectManager(BaseManager[Redirect]):
     """Redirect mongodb manager"""
 
     @classmethod
-    def init(cls, logger: AppLogger, model: Type[Redirect]) -> None:
-        super().init(logger, model)
+    def init(cls, logger: AppLogger) -> None:
+        super().init(logger, Redirect)
 
     @classmethod
     def create(cls, ip: str, oneway_uid: str) -> Redirect:
@@ -38,14 +38,14 @@ class RedirectManager(BaseManager[Redirect]):
         return cls._delete({"oneway_uid": oneway_uid})
 
 
-class OneWayManager(MongoManager[OneWay]):
+class OneWayManager(BaseManager[OneWay]):
     """OneWay mongodb manager"""
 
     _redirect = RedirectManager
 
     @classmethod
-    def init(cls, logger: AppLogger, model: Type[OneWay]) -> None:
-        super().init(logger, model)
+    def init(cls, logger: AppLogger) -> None:
+        super().init(logger, OneWay)
 
     @classmethod
     def _make_target_url(cls, target: str) -> TargetUrl:
@@ -80,6 +80,15 @@ class OneWayManager(MongoManager[OneWay]):
         return cls._create(
             name=name, alias=alias, target=target_url, is_temporary=is_temporary, lifetime=lifetime, user_uid=user_uid
         )
+
+    @classmethod
+    def update(
+        cls,
+        uid: str = None,
+        *,
+        alias: Optional[str],
+    ) -> None:
+        cls._update({"_id": uid}, {"$set": {"alias": alias}})
 
     @classmethod
     def get(cls, *, uid: str = None, alias: str = None) -> Optional[OneWay]:

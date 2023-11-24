@@ -1,8 +1,7 @@
 # %% Import Dependencies
-from typing import Any, Optional, Type
+from typing import Any, Optional
 
 from koroche.applogger import AppLogger
-from koroche.exceptions import MissingRequiredArgument
 from koroche.manager import BaseManager
 from koroche.user.model import User, UserLocale
 
@@ -12,8 +11,8 @@ class UserManager(BaseManager[User]):
     """User mongodb manager"""
 
     @classmethod
-    def init(cls, logger: AppLogger, model: Type[User]) -> None:
-        super().init(logger, model)
+    def init(cls, logger: AppLogger) -> None:
+        super().init(logger, User)
 
     @classmethod
     def create(cls, name: str, email: str, password: str, locale: UserLocale) -> User:
