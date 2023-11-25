@@ -7,8 +7,8 @@ services:
       context: .
       dockerfile: Dockerfile
 
-  nginx-server:
-    container_name: "nginx-server"
+  koroche-nginx-server:
+    container_name: "koroche-nginx-server"
     build:
       context: ./nginx
       dockerfile: Dockerfile
