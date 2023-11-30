@@ -1,10 +1,12 @@
 from fastapi import APIRouter
+from koroche.config import ConfigManager
 
 from .oneways import router as oneways_router
 
 # from .users import router as users_router
 
-router = APIRouter(prefix="/api/v1", tags=["api"])
+
+router = APIRouter(prefix=f"/api/{ConfigManager.app.api_version}", tags=["api"])
 
 # Temporary deprecated
 # router.include_router(users_router)
