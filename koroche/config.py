@@ -47,7 +47,15 @@ class NetworkConfig(ConfigModel):
     _name = "net"
 
     backoff: BackoffConfig
+
+
+class ApiConfig(ConfigModel):
+    """Config for api requests"""
+
+    _name = "api"
+
     base_api_url: str
+    version: str
 
 
 # %% Manager
@@ -58,6 +66,7 @@ class ConfigManager:
     applog: AppLoggerConfig
     # cache_config: CacheConfig
     net: NetworkConfig
+    api: ApiConfig
 
     @classmethod
     def load_config(cls, path: str) -> None:
