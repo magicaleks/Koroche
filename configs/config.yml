@@ -13,8 +13,10 @@ applog:
   level: 'INFO'
 
 net:
-  base_api_url: "localhost:23000"
   backoff:
     max_tries_n: 3
     code_forcelist: [408, 429, 500, 502, 503, 504]
 
+api:
+  base_api_url: "localhost:23000"
+  version: "v1"
