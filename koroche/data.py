@@ -62,11 +62,3 @@ class AppHttpClient:
             return response.json()
 
         return _post(url, data, params, headers)
-
-
-class BaseApiClient:
-    """Base api client"""
-
-    def __init__(self, logger: AppLogger, http_client: AppHttpClient) -> None:
-        self._logger = logger
-        self._client = http_client
