@@ -1,74 +1,43 @@
 # %% Import dependencies
 from abc import ABC
-from datetime import datetime
-from typing import Any, Generic, Iterable, Optional, Type, TypeVar
+from typing import Any, Dict
 
 from koroche.applogger import AppLogger
-from koroche.data import BaseApiClient
-from koroche.model import BaseModel
-from koroche.utils import make_uuid
-
-T = TypeVar("T", bound=BaseModel)
+from koroche.data import AppHttpClient
 
 
 # %% Manager
-class BaseManager(Generic[T], ABC):
-    """Base manager for BaseModels"""
+class BaseApiManager(ABC):
+    """Base api manager"""
 
-    _model: Type[T]
-    _client: BaseApiClient
+    _http_client: AppHttpClient
+    _base_url: str
     _logger: AppLogger
 
     @classmethod
-    def init(cls, logger: AppLogger, model: Type[T], client: BaseApiClient = None) -> None:
-        """Init MongoManager"""
+    def init(cls, logger: AppLogger, client: AppHttpClient, base_url: str) -> None:
+        """Init ApiManager"""
 
-        cls._model = model
-
-        cls._client = client
+        cls._http_client = client
+        cls._base_url = base_url
         cls._logger = logger
 
-        cls._logger.info(f"{model.__name__} manager successfull started")
+        cls._logger.info(f"{cls.__name__} api manager successfull started")
 
     @classmethod
-    def _create(cls, **kwargs) -> T:
-        """Create model"""
+    def _get(cls, path: str, params: Dict[str, Any] = {}, headers: Dict[str, str] = {}) -> Dict[Any, Any]:
+        """Get request wrapping"""
 
-        kwargs["_id"] = make_uuid()
-        kwargs["created_at"] = datetime.utcnow()
+        response = cls._http_client.get(cls._base_url + path, params, headers)
 
-        model = cls._model(**kwargs)
-
-        cls._collection.insert_one(model.to_dict())
-
-        cls._logger.info(f'Created {cls._model.__name__} model with uid "{model.uid}"')
-
-        return model
+        return response
 
     @classmethod
-    def _get_many(cls, filt: dict[str, Any], limit: int = 0) -> Iterable[T]:
-        """Find models"""
+    def _post(
+        cls, path: str, data: Dict[str, Any] = {}, params: Dict[str, Any] = {}, headers: Dict[str, str] = {}
+    ) -> Dict[Any, Any]:
+        """Post request wrapping"""
 
-        res: list[T] = []
-        for doc in cls._collection.find(filt, limit=limit):
-            res.append(cls._model(**doc))
-        return res
+        response = cls._http_client.post(cls._base_url + path, data, params, headers)
 
-    @classmethod
-    def _get_one(cls, filt: dict[str, Any]) -> Optional[T]:
-        """Find model"""
-        res = cls._collection.find_one(filt)
-
-        return cls._model(**res) if res else None
-
-    @classmethod
-    def _update(cls, filt: dict[str, Any], update: dict[str, Any]) -> None:
-        """Update models"""
-        cls._collection.update_many(filt, update)
-
-    @classmethod
-    def _delete(cls, filt: dict[str, Any]) -> None:
-        """Delete models"""
-        cls._collection.delete_many(filt)
-
-        cls._logger.info(f'Deleted {cls._model.__name__} model(s) with filters "{str(filt)}"')
+        return response
