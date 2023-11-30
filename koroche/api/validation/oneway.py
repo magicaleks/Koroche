@@ -2,12 +2,12 @@ from typing import Optional
 
 from koroche.oneway.model import WayLifetime
 from pydantic import BaseModel
+from typing_extensions import deprecated
 
 
 class CreateOneWay(BaseModel):
     """CreateOneWay validate model"""
 
-    name: str
     target: str
     is_temporary: bool
     lifetime: WayLifetime
@@ -22,6 +22,7 @@ class UpdateOneWay(BaseModel):
     alias: Optional[str]
 
 
+@deprecated("Delete method temporary deprecated")
 class DeleteOneWay(BaseModel):
     """DeleteOneWay validate model"""
 
