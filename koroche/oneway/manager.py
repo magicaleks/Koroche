@@ -6,7 +6,6 @@ from koroche.config import ConfigManager
 from koroche.data import AppHttpClient
 from koroche.manager import BaseApiManager
 from koroche.oneway.model import OneWay, Redirect, WayLifetime
-from typing_extensions import deprecated
 
 
 # %% Managers
@@ -82,7 +81,6 @@ class OneWayManager(BaseApiManager):
             },
         )
 
-    @deprecated("Delete method temporary deprecated")
     @classmethod
     def delete(cls, uid: str) -> None:
         """Delete OneWay model"""
