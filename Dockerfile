@@ -1,6 +1,5 @@
 FROM python:3.11-slim
 
-VOLUME /koroche /koroche
 COPY koroche /koroche/
 COPY requirements.txt /koroche/requirements.txt
 COPY configs/config.yml /configs/config.yml
