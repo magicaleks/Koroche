@@ -13,7 +13,7 @@ applog:
   level: 'DEBUG'
 
 net:
-  base_api_url: "localhost:19097"
+  base_api_url: "http://localhost:19097"
   backoff:
     max_tries_n: 3
     code_forcelist: [408, 429, 500, 502, 503, 504]
