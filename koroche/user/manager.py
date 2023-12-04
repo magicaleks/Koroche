@@ -2,12 +2,12 @@
 from typing import Any, Optional
 
 from koroche.applogger import AppLogger
-from koroche.manager import BaseManager
+from koroche.manager import BaseApiManager
 from koroche.user.model import User, UserLocale
 
 
 # %% Manager
-class UserManager(BaseManager[User]):
+class UserManager(BaseApiManager):
     """User mongodb manager"""
 
     @classmethod
