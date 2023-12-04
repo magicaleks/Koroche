@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Response
-from koroche.api.validation.oneway import CreateOneWay, UpdateOneWay
+from koroche.api.v1.validation.oneway import CreateOneWay, UpdateOneWay
 from koroche.oneway.manager import OneWayManager
 from koroche.oneway.model import OneWay
 

@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Response
-from koroche.api.validation.user import CreateUser, DeleteUser, UpdateUser
+from koroche.api.v1.validation.user import CreateUser, DeleteUser, UpdateUser
 from koroche.user.manager import UserManager
 from koroche.user.model import User
 
