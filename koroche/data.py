@@ -35,7 +35,9 @@ class AppHttpClient:
             if response.status_code in ConfigManager.net.backoff.code_forcelist:
                 raise RetryPolicyException(url, response.status_code)
 
-            response.raise_for_status()
+            if response.is_error:
+                self._logger.warning(f"Response content: {response.json()}")
+                response.raise_for_status()
 
             return response.json()
 
@@ -57,7 +59,9 @@ class AppHttpClient:
             if response.status_code in ConfigManager.net.backoff.code_forcelist:
                 raise RetryPolicyException(url, response.status_code)
 
-            response.raise_for_status()
+            if response.is_error:
+                self._logger.warning(f"Response content: {response.json()}")
+                response.raise_for_status()
 
             return response.json()
 
