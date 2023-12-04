@@ -54,7 +54,7 @@ class AppHttpClient:
             exception=RetryPolicyException, wait_gen=backoff.expo, max_tries=ConfigManager.net.backoff.max_tries_n
         )
         def _post(url, data, params, headers):
-            response = httpx.post(url, data=data, params=params, headers=headers)
+            response = httpx.post(url, json=data, params=params, headers=headers)
 
             if response.status_code in ConfigManager.net.backoff.code_forcelist:
                 raise RetryPolicyException(url, response.status_code)
