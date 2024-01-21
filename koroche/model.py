@@ -23,7 +23,7 @@ class BaseModel(_Model, ABC):
 
     _collection_name: str
 
-    uid: str = pdc.Field(alias="_id")
+    uid: str
     created_at: datetime
 
     def to_dict(self) -> dict:

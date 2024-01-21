@@ -1,0 +1,30 @@
+#app .ServicePage {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    box-sizing: border-box;
+    padding: 200px;
+    flex-direction: column;
+    row-gap: 50px;
+}
+
+#app .ServicePage div {
+    display: flex;
+    row-gap: 16px;
+}
+
+#app .ServicePage div p {
+    font-size: 24px;
+}
+
+#app .ServicePage div input {
+    font-size: 24px;
+    border-bottom: 1px solid black;
+}
+
+#app .ServicePage button {
+    font-size: 28px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 12px 18px;
+}
