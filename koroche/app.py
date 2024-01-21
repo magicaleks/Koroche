@@ -12,7 +12,7 @@ from koroche.user.manager import UserManager
 from uvicorn import run
 
 fpath = pathlib.Path(__file__)
-path = os.path.join(fpath.parent, "configs", "config.yml")
+path = os.path.join(fpath.parent.parent, "configs", "config.yml")
 ConfigManager.load_config(path)
 app = FastAPI(
     debug=ConfigManager.app.debug,
