@@ -5,13 +5,13 @@ services:
     container_name: "koroche-app"
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile-backend
 
   koroche-frontend:
     container_name: "koroche-frontend"
     build:
       context: .
-      dockerfile: Dockerfile-backend
+      dockerfile: Dockerfile-frontend
     
     ports:
     - "80:5173"
