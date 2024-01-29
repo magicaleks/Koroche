@@ -1,3 +1,137 @@
-body {
-  font-family: Arial, Helvetica, sans-serif;
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.8em;
+  line-height: 1.1;
+  color: #c7000d;
+}
+
+button[type=submit] {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #c7000d;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+button.valid:hover {
+  border-color: black;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+button.valid {
+  background-color: #c7000d;
+}
+
+button.invalid {
+  background-color: #68686826;
+  color: black;
+  cursor: not-allowed;
+}
+
+.btn-group {
+  display: flex;
+  gap: 9px;
+}
+
+.btn-group>button {
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 100%;
+  background-color: inherit;
+  color: black;
+  padding: 0;
+}
+
+.btn-group>button.active {
+  background-color: #FFD9E2;
+}
+
+.btn-group>button:hover {
+  border: 2px solid #f3a4b680;
+}
+
+.btn-group>button.active:hover {
+  border: 2px solid #f3a4b6;
+}
+
+.header {
+  position: absolute;
+  top: -20px;
+  left: 20px;
+}
+
+a {
+  all: unset;
+  cursor: pointer;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+}
+
+label {
+  font-size: 22px;
+}
+
+form {
+  position: relative;
+  min-width: 350px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 22px;
+  gap: 4px
+}
+
+.container-shortURL {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 22px;
+  gap: 4px
+}
+
+input {
+  font-size: 16px;
+  display: block;
+  width: 300px;
+  height: 50px;
+  padding: 4px 12px;
+  background-color: #fff3f3;
+  background-image: none;
+  border: 2px solid #FE4673;
+  color: #1a0103;
+  border-radius: 15px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+input:focus {
+  outline: 0;
+  border-color: #1ab188;
 }

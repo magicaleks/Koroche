@@ -13,8 +13,9 @@ class RedirectManager(BaseApiManager):
     """Redirect api manager"""
 
     @classmethod
-    def init(cls, logger: AppLogger) -> None:
-        NotImplemented()
+    def init(cls, logger: AppLogger, client: AppHttpClient) -> None:
+        base_url = f"{ConfigManager.api.base_api_url}/api/{ConfigManager.api.version}/redirects"
+        super().init(logger, client, base_url)
 
     @classmethod
     def create(cls, ip: str, oneway_uid: str) -> Redirect:
@@ -84,6 +85,20 @@ class OneWayManager(BaseApiManager):
     @classmethod
     def delete(cls, uid: str) -> None:
         """Delete OneWay model"""
-        cls._delete({"_id": uid})
+        cls._post(
+            "/delete",
+            data={
+                "uid": uid
+            },
+        )
 
-        cls._redirect.delete_redirects(uid)
+        # cls._redirect.delete_redirects(uid)
+
+    @classmethod
+    def redirect(cls, alias: str) -> str:
+        """Redirects to OneWay origin"""
+        response = cls._get(
+            f"/{alias}",
+        )
+
+        return response["redirect"]

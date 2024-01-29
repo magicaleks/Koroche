@@ -3,12 +3,12 @@ import pathlib
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from koroche.api.v1 import router
+from koroche.api.v1 import router as api_router
+from koroche.views import router as views_router
 from koroche.applogger import AppLogger
 from koroche.config import ConfigManager
 from koroche.data import AppHttpClient
-from koroche.oneway.manager import OneWayManager, RedirectManager
-from koroche.user.manager import UserManager
+from koroche.oneway.manager import OneWayManager
 from uvicorn import run
 
 fpath = pathlib.Path(__file__)
@@ -26,7 +26,9 @@ app.add_middleware(
     CORSMiddleware, allow_origins=["*"], allow_credentials=True, allow_methods=["*"], allow_headers=["*"]
 )
 
-app.include_router(router, prefix="/api")
+app.include_router(api_router, prefix="/api")
+
+app.include_router(views_router, prefix="/")
 
 
 @app.on_event("startup")
@@ -36,14 +38,15 @@ def startup():
     # user_logger = AppLogger("User", ConfigManager.applog)
     # UserManager.init(user_logger)
 
-    # redirect_logger = AppLogger("Redirect", ConfigManager.applog)
-    # RedirectManager.init(redirect_logger)
     api_client_logger = AppLogger("ApiClient", ConfigManager.applog)
 
     client = AppHttpClient(api_client_logger)
 
     way_logger = AppLogger("OneWay", ConfigManager.applog)
     OneWayManager.init(way_logger, client)
+
+    # redirect_logger = AppLogger("Redirect", ConfigManager.applog)
+    # RedirectManager.init(redirect_logger, client)
 
 
 if __name__ == "__main__":
