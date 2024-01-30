@@ -72,7 +72,7 @@ function App() {
                   required
                   autoComplete="off"
                   value={link}
-                  placeholder="Пример: https://длинная-ссылка.рф/"
+                  placeholder="Пример: https://длинная-ссылка.ru/"
                   onChange={(e) => inputHandler(e.target.value)}
                 />
                 <div className="btn-group">

@@ -12,9 +12,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-frontend
-    
-    ports:
-    - "80:5173"
 
   koroche-nginx-server:
     container_name: "koroche-nginx-server"
