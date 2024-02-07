@@ -1,5 +1,5 @@
 export const SHORT_URL_START = "https://koroche.app/";
-export const API = "http://83.147.246.113/api/v1";
+export const API = "http://83.147.246.113:23000/api/v1";
 
 /** варианты выбора для dropdown: Array[value,label]
  * @param value - значение в часах
