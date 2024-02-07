@@ -101,8 +101,10 @@ function HomePage() {
 
 function Redirect() {
   const alias = useParams();
-  const url = getRedirectUrl(alias)
+  const url = (async () => {await getRedirectUrl(alias)})()
+  console.log(url)
   window.location.replace(url)
+  
 }
 
 export { HomePage, Redirect };
