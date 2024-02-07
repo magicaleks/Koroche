@@ -4,7 +4,6 @@ import pathlib
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from koroche.api.v1 import router as api_router
-from koroche.views import router as views_router
 from koroche.applogger import AppLogger
 from koroche.config import ConfigManager
 from koroche.data import AppHttpClient
@@ -27,8 +26,6 @@ app.add_middleware(
 )
 
 app.include_router(api_router, prefix="/api")
-
-app.include_router(views_router)
 
 
 @app.on_event("startup")

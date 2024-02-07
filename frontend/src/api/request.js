@@ -35,4 +35,19 @@ async function updateShortUrl(uid, alias) {
   return await result.json();
 }
 
-export { createShortUrl, updateShortUrl };
+async function getRedirectUrl(alias) {
+  const result = await fetch(`${API}/redirect`, {
+    method: "get",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      alias,
+    }),
+  });
+
+  return await result.json();
+}
+
+export { createShortUrl, updateShortUrl, getRedirectUrl };
