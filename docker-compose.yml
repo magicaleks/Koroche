@@ -24,4 +24,4 @@ services:
       dockerfile: Dockerfile
 
     ports:
-      - "23000:80"
+      - "23000:23000"
