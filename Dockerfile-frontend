@@ -6,4 +6,4 @@ WORKDIR /frontend
 
 RUN npm install
 
-CMD ["npm", "run"]
+CMD ["npm", "run", "prod"]
