@@ -100,14 +100,14 @@ function HomePage() {
 }
 
 function Redirect() {
-  const alias = useParams();
+  const params = useParams();
   useEffect(() => {
     const redirect = async alias => {
       const url = await getRedirectUrl(alias)
       console.log(url)
       window.location.replace(url)
     }
-    redirect(alias);
+    redirect(params.alias);
     
   })
 
