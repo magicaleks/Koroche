@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Response
-from koroche.api.v1.validation.oneway import CreateOneWay, RedirectOneWay, UpdateOneWay
+from koroche.api.v1.validation.oneway import CreateOneWay, UpdateOneWay
 from koroche.oneway.manager import OneWayManager
 from koroche.oneway.model import OneWay
 import starlette.status as status
@@ -30,10 +30,10 @@ def update_oneway(schema: UpdateOneWay):
 
     return Response(status_code=status.HTTP_200_OK)
 
-@router.get("/redirect", response_description="Redirect oneway")
-def redirect_oneway(schema: RedirectOneWay):
+@router.get("/redirect/{alias}", response_description="Redirect oneway")
+def redirect_oneway(alias: str):
     """Update oneway"""
 
-    link = OneWayManager.redirect(alias=schema.alias)
+    link = OneWayManager.redirect(alias=alias)
 
     return link
