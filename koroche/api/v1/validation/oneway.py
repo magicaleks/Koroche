@@ -25,3 +25,8 @@ class DeleteOneWay(BaseModel):
     """DeleteOneWay validate model"""
 
     uid: str
+
+class RedirectOneWay(BaseModel):
+    """RedirectOneWay validate model"""
+
+    alias: str

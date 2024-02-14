@@ -1,7 +1,7 @@
 import { API } from "../constants";
 
 async function createShortUrl(url, lifetime) {
-  const result = await fetch(`${API}/create`, {
+  const result = await fetch(`${API}/oneways/create`, {
     method: "post",
     headers: {
       Accept: "application/json",
@@ -20,15 +20,15 @@ async function createShortUrl(url, lifetime) {
 }
 
 async function updateShortUrl(uid, alias) {
-  const result = await fetch(`${API}/update`, {
+  const result = await fetch(`${API}/oneways/update`, {
     method: "post",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      uid,
-      alias,
+      uid: uid,
+      alias: alias,
     }),
   });
 
@@ -36,15 +36,12 @@ async function updateShortUrl(uid, alias) {
 }
 
 async function getRedirectUrl(alias) {
-  const result = await fetch(`${API}/redirect`, {
+  const result = await fetch(`${API}/oneways/redirect/${alias}`, {
     method: "get",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      alias,
-    }),
   });
 
   return await result.json();
