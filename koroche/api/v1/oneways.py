@@ -30,7 +30,7 @@ def update_oneway(schema: UpdateOneWay):
 
     return Response(status_code=status.HTTP_200_OK)
 
-@router.get("/redirect/{alias}", response_description="Redirect oneway")
+@router.get("/{alias}", response_description="Redirect oneway")
 def redirect_oneway(alias: str):
     """Update oneway"""
 

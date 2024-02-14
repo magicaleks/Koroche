@@ -36,7 +36,7 @@ class AppHttpClient:
                 raise RetryPolicyException(url, response.status_code)
 
             if response.is_error:
-                self._logger.warning(f"Response content: {response.json()}")
+                self._logger.warning(f"Response content: {response.content.decode()}")
                 response.raise_for_status()
 
             return response.json()
@@ -60,7 +60,7 @@ class AppHttpClient:
                 raise RetryPolicyException(url, response.status_code)
 
             if response.is_error:
-                self._logger.warning(f"Response content: {response.json()}")
+                self._logger.warning(f"Response content: {response.content.decode()}")
                 response.raise_for_status()
 
             return response.json()

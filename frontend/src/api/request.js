@@ -36,7 +36,7 @@ async function updateShortUrl(uid, alias) {
 }
 
 async function getRedirectUrl(alias) {
-  const result = await fetch(`${API}/oneways/redirect/${alias}`, {
+  const result = await fetch(`${API}/oneways/${alias}`, {
     method: "get",
     headers: {
       Accept: "application/json",
