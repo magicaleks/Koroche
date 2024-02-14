@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { createShortUrl, updateShortUrl, getRedirectUrl } from "../api/request";
 import { DROPDOWN_OPTIONS, SHORT_URL_START } from "../constants";
 import { isValidUrl } from "../utils/validator";
@@ -101,10 +101,21 @@ function HomePage() {
 
 function Redirect() {
   const alias = useParams();
-  const url = (async () => {await getRedirectUrl(alias)})()
-  console.log(url)
-  window.location.replace(url)
-  
+  useEffect(() => {
+    const redirect = async alias => {
+      const url = await getRedirectUrl(alias)
+      console.log(url)
+      window.location.replace(url)
+    }
+    redirect(alias);
+    
+  })
+
+  // return (
+  //   <>
+  //     перенаправление...
+  //   </>
+  // )
 }
 
 export { HomePage, Redirect };
