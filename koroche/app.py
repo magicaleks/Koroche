@@ -21,9 +21,9 @@ app = FastAPI(
     docs_url=f"/api/{ConfigManager.app.api_version}/docs",
 )
 
-app.add_middleware(
-    CORSMiddleware, allow_origins=["83.147.246.113"], allow_methods=["GET", "POST"], allow_headers=["*"]
-)
+# app.add_middleware(
+#     CORSMiddleware, allow_origins=["83.147.246.113", "localhost"], allow_methods=["*"], allow_headers=["*"]
+# )
 
 app.include_router(api_router, prefix="/api")
 
