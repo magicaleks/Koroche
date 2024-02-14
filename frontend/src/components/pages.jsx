@@ -105,7 +105,7 @@ function Redirect() {
     const redirect = async alias => {
       const url = await getRedirectUrl(alias)
       console.log(url)
-      window.location.replace(url)
+      // window.location.replace(url)
     }
     redirect(params.alias);
     
