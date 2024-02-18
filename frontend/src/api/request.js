@@ -12,7 +12,7 @@ async function createShortUrl(url, lifetime) {
       is_temporary: true,
       lifetime,
       user_uid: localStorage.getItem("user_uid"),
-      only_numbers: true,
+      only_numbers: false,
     }),
   });
 

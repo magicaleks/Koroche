@@ -102,3 +102,5 @@ class OneWayManager(BaseApiManager):
         )
 
         return response["redirect"]
+
+
