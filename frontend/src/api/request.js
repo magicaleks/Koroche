@@ -11,8 +11,7 @@ async function createShortUrl(url, lifetime) {
       target: url,
       is_temporary: true,
       lifetime,
-      user_uid: localStorage.getItem("user_uid"),
-      only_numbers: false,
+      // user_uid: localStorage.getItem("user_uid"),
     }),
   });
 

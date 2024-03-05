@@ -18,5 +18,5 @@ net:
     code_forcelist: [408, 429, 500, 502, 503, 504]
 
 api:
-  base_api_url: "http://83.147.246.113:23000"
+  base_api_url: "http://krch.fun/:23000"
   version: "v1"
