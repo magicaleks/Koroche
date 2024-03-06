@@ -10,7 +10,8 @@ async function createShortUrl(url, lifetime) {
     body: JSON.stringify({
       target: url,
       is_temporary: true,
-      lifetime,
+      lifetime: lifetime,
+      only_numbers: false
       // user_uid: localStorage.getItem("user_uid"),
     }),
   });
