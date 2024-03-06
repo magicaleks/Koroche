@@ -44,7 +44,7 @@ async function getRedirectUrl(alias) {
     },
   });
 
-  return await result.text();
+  return await result.json();
 }
 
 export { createShortUrl, updateShortUrl, getRedirectUrl };

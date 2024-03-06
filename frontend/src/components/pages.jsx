@@ -28,7 +28,6 @@ function HomePage() {
 
   async function createShortLinkHandler(e) {
     e.preventDefault();
-    console.log(link);
     const { uid, alias } = await createShortUrl(link, currentDropdownOption?.value);
     setUUid(uid);
     setShortLink(alias);
@@ -104,9 +103,9 @@ function Redirect() {
   const params = useParams();
   useEffect(() => {
     const redirect = async alias => {
-      const url = await getRedirectUrl(alias);
-      console.log(url);
-      window.location.replace(`https://${url}`);
+      const resp = await getRedirectUrl(alias);
+      console.log(resp.url);
+      window.location.replace(resp.url);
     }
     redirect(params.alias);
     

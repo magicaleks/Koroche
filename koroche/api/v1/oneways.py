@@ -32,8 +32,8 @@ def update_oneway(schema: UpdateOneWay):
 
 @router.get("/{alias}", response_description="Redirect oneway")
 def redirect_oneway(alias: str):
-    """Update oneway"""
+    """Redirect oneway"""
 
     link = OneWayManager.redirect(alias=alias)
 
-    return link
+    return {"url": link}
