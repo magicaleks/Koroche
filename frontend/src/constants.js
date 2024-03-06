@@ -1,4 +1,4 @@
-export const SHORT_URL_START = "https://koroche.app/";
+export const SHORT_URL_START = "http://krch.fun/";
 export const API = "http://krch.fun:23002/api/v1";
 
 /** варианты выбора для dropdown: Array[value,label]

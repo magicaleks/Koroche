@@ -5,7 +5,7 @@ import { isValidUrl } from "../utils/validator";
 import { useParams } from "react-router-dom";
 
 function HomePage() {
-    const [link, setLink] = useState(""); // первая ссыока
+    const [link, setLink] = useState(""); // первая ссылка
   const [shortLink, setShortLink] = useState(null); // короткая ссылка
   const [error, setError] = useState(true); // если неправильная ссылка
   const [currentDropdownOption, setCurrentDropdownOption] = useState({ value: 0, label: "поменять время" }); // Для работы со временем
@@ -28,6 +28,7 @@ function HomePage() {
 
   async function createShortLinkHandler(e) {
     e.preventDefault();
+    console.log(link);
     const { uid, alias } = await createShortUrl(link, currentDropdownOption?.value);
     setUUid(uid);
     setShortLink(alias);
