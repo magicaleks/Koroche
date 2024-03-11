@@ -22,7 +22,7 @@ app = FastAPI(
 )
 
 app.add_middleware(
-    CORSMiddleware, allow_origins=["http://krch.fun", "https://krch.fun", "http://localhost", "https://217.25.90.115", "http://217.25.90.115", "https://localhost"], allow_methods=["*"], allow_headers=["*"]
+    CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"]
 )
 
 app.include_router(api_router, prefix="/api")
